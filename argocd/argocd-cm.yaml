@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+data:
+  # Add any additional configurations here
+  application.instanceLabelKey: argocd.argoproj.io/instance
+  repositories: |
+    - url: https://github.com/your-username/your-repo.git
+      type: git
+      passwordSecret:
+        name: repo-secret
+        key: password
+      usernameSecret:
+        name: repo-secret
+        key: username

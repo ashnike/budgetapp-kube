@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rails-app
+  labels:
+    app: rails-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rails-app
+  template:
+    metadata:
+      labels:
+        app: rails-app
+    spec:
+      containers:
+      - name: rails-app
+        image: your-docker-image:tag # Replace with your built Docker image
+        ports:
+        - containerPort: 3000
+        env:
+        - name: POSTGRES_USER
+          value: "postgres"
+        - name: POSTGRES_PASSWORD
+          value: "password"
+        - name: POSTGRES_DB
+          value: "myapp_production"
+        - name: DATABASE_HOST
+          value: "postgres"
