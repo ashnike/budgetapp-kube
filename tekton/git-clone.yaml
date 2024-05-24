@@ -1,0 +1,15 @@
+apiVersion: tekton.dev/v1beta1
+kind: ClusterTask
+metadata:
+  name: git-clone
+spec:
+  steps:
+    - name: git-clone
+      image: alpine/git
+      script: |
+        git clone $(inputs.params.url) $(workspaces.output.path)
+      volumeMounts:
+        - name: source
+          mountPath: $(workspaces.output.path)
+  workspaces:
+    - name: output

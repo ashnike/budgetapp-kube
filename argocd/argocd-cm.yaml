@@ -4,10 +4,9 @@ metadata:
   name: argocd-cm
   namespace: argocd
 data:
-  # Add any additional configurations here
   application.instanceLabelKey: argocd.argoproj.io/instance
   repositories: |
-    - url: https://github.com/your-username/your-repo.git
+    - url: https://github.com/ashnike/Budget-App.git
       type: git
       passwordSecret:
         name: repo-secret

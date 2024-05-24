@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/your-username/your-repo' # Replace with your GitHub repo
+    repoURL: 'https://github.com/ashnike/Budget-App.git'
     targetRevision: HEAD
     path: manifests
   destination:

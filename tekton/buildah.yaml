@@ -1,0 +1,15 @@
+apiVersion: tekton.dev/v1beta1
+kind: ClusterTask
+metadata:
+  name: buildah
+spec:
+  steps:
+    - name: build-and-push
+      image: registry.access.redhat.com/ubi8/ubi-minimal:latest
+      command:
+        - /bin/bash
+      args:
+        - -c
+        - |
+          buildah bud -t $(inputs.params.IMAGE) $(inputs.resources.source.path) &&
+          buildah push $(inputs.params.IMAGE) docker://$(inputs.params.STORAGE)/$(inputs.params.IMAGE)
